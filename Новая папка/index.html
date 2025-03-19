@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Электронды ақпарат – болашақ негізі</title>
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: #fff;
+      transition: background 0.5s;
+    }
+    .dark-mode { background: #121212; color: #ddd; }
+
+    #loader {
+      position: fixed;
+      width: 100%; height: 100%;
+      background: #000; color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      z-index: 1000;
+    }
+
+    header {
+      text-align: center;
+      padding: 4rem 1rem;
+      background: rgba(0,0,0,0.3);
+    }
+    header h1 {
+      font-size: 3rem; margin-bottom: 1rem;
+    }
+    header p {
+      font-size: 1.2rem; margin-bottom: 1rem;
+    }
+    header button {
+      padding: 0.8rem 1.5rem;
+      background: #00c6ff;
+      border: none; border-radius: 10px;
+      color: #fff; cursor: pointer;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+    header button:hover { background: #0072ff; }
+
+    .cards {
+      display: flex; flex-wrap: wrap; justify-content: center;
+      gap: 1rem; padding: 2rem;
+    }
+    .card {
+      background: rgba(255,255,255,0.1);
+      padding: 1.5rem; border-radius: 15px;
+      text-align: center; flex: 1 1 250px;
+      max-width: 300px; transition: transform 0.3s, background 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-10px);
+      background: rgba(255,255,255,0.2);
+    }
+    .card img {
+      width: 60px; margin-bottom: 1rem;
+    }
+
+    .slider-section {
+      padding: 3rem 1rem;
+      background: rgba(0,0,0,0.2);
+      border-top: 2px solid rgba(255,255,255,0.2);
+      border-bottom: 2px solid rgba(255,255,255,0.2);
+    }
+    .slider {
+      max-width: 800px; margin: auto;
+      overflow: hidden; position: relative; height: 150px;
+    }
+    .slide {
+      position: absolute; width: 100%;
+      opacity: 0; transition: opacity 1s ease;
+      text-align: center; font-size: 1.3rem; padding: 1rem;
+    }
+    .slide.active { opacity: 1; }
+
+    .gallery-reviews {
+      display: flex; flex-wrap: wrap; gap: 2rem;
+      padding: 2rem; justify-content: center;
+    }
+    .gallery, .reviews {
+      background: rgba(255,255,255,0.1);
+      padding: 1rem; border-radius: 15px;
+      flex: 1 1 400px;
+    }
+    .images img {
+      width: 100px; border-radius: 10px;
+      margin: 5px; cursor: pointer;
+      transition: transform 0.3s;
+    }
+    .images img:hover { transform: scale(1.1); }
+
+    textarea {
+      width: 100%; padding: 0.5rem;
+      border-radius: 8px; border: none; resize: none;
+    }
+    button {
+      background: #00c6ff; border: none;
+      padding: 0.5rem 1rem; border-radius: 10px;
+      color: white; cursor: pointer;
+      margin-top: 0.5rem;
+    }
+    button:hover { background: #0072ff; }
+
+    #reviewList {
+      margin-top: 1rem; list-style: none; padding: 0;
+    }
+
+    .event-countdown, .map {
+      padding: 2rem; text-align: center;
+    }
+    iframe {
+      width: 90%; max-width: 800px;
+      border-radius: 10px; border: 2px solid #00c6ff;
+    }
+
+    .modal {
+      display: none; position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.8);
+      align-items: center; justify-content: center;
+      z-index: 1000;
+    }
+    .modal img {
+      max-width: 80%; border-radius: 10px;
+    }
+
+    footer {
+      text-align: center; padding: 1rem;
+      background: rgba(0,0,0,0.3); margin-top: 2rem;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="loader">Загрузка...</div>
+
+  <header>
+    <h1>Электронды ақпарат – болашақ негізі</h1>
+    <p>Ақпарат – заманауи технологиялар дәуірінде табыстың, білімнің және қауіпсіздіктің негізі.</p>
+    <button onclick="scrollToSection('info')">Бастау</button>
+  </header>
+
+  <main>
+    <!-- Карточки -->
+<section class="cards" id="info">
+  <a href="internet.html" class="card" data-aos="fade-up">
+    <img src="https://cdn-icons-png.flaticon.com/512/906/906175.png" alt="Интернет">
+    <h2>Интернет ресурстары</h2>
+    <p>Ақпаратты іздеу, алу және таратуда ең маңызды құрал.</p>
+  </a>
+  <a href="cloud.html" class="card" data-aos="fade-up" data-aos-delay="100">
+    <img src="https://cdn-icons-png.flaticon.com/512/3304/3304563.png" alt="Бұлтты сақтау">
+    <h2>Бұлтты сақтау</h2>
+    <p>Мәліметтерді қауіпсіз әрі қолжетімді сақтау мүмкіндігі.</p>
+  </a>
+  <a href="education.html" class="card" data-aos="fade-up" data-aos-delay="200">
+    <img src="https://cdn-icons-png.flaticon.com/512/2972/2972526.png" alt="Оқыту">
+    <h2>Қашықтықтан оқыту</h2>
+    <p>Білім алудағы жаңа әдістер мен технологиялар.</p>
+  </a>
+</section>
+
+    <!-- Слайдер -->
+    <section class="slider-section" data-aos="fade-up">
+      <h2 style="text-align:center; margin-bottom: 1rem;">Ақпарат әлемі</h2>
+      <div class="slider">
+        <div class="slide active">
+          <p>💡 Электронды ақпарат – қазіргі заманның басты қозғаушы күші. Ол экономиканы, білімді және ғылымды жаңа деңгейге көтереді.</p>
+        </div>
+        <div class="slide">
+          <p>🌐 Ақпаратты жылдам алу және тарату – жаһандық коммуникацияның негізі. Бүгінгі қоғам деректерсіз жұмыс істей алмайды.</p>
+        </div>
+        <div class="slide">
+          <p>🔐 Ақпаратты қорғау – болашақтың басты талабы. Қауіпсіздік цифрлық әлемде бірінші орында тұрады.</p>
+        </div>
+        <div class="slide">
+          <p>🚀 Жасанды интеллект және Big Data – ақпаратты өңдеудің жаңа дәуірі. Олар арқылы инновациялар пайда болады.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Галерея -->
+    <section class="gallery-reviews">
+      <div class="gallery" data-aos="zoom-in">
+        <h2>Фотогалерея</h2>
+        <div class="images">
+          <img src="f1.jpg" />
+          <img src="f2.jpg" />
+          <img src="f3.jpg" />
+          <img src="f4.jpg" />
+        </div>
+      </div>
+
+      <!-- Отзывы -->
+      <div class="reviews" data-aos="zoom-in">
+        <h2>Пікірлер</h2>
+        <textarea id="reviewInput" placeholder="Пікіріңізді жазыңыз..."></textarea>
+        <button onclick="submitReview()">Жіберу</button>
+        <ul id="reviewList"></ul>
+      </div>
+    </section>
+
+    <!-- Таймер -->
+    <section class="event-countdown" data-aos="fade-up">
+      <h2>Келесі оқиғаға дейін:</h2>
+      <p id="countdown">00 күн 00 сағ 00 мин 00 сек</p>
+    </section>
+
+    <!-- Карта -->
+    <section class="map" data-aos="fade-up">
+      <h2>Біздің орналасқан жеріміз</h2>
+     <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2922.310932147788!2d71.3843406!3d42.908483!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38a71d4cb6ed4687%3A0x351b8f70a24a7307!2zItCR0ZbQu9GW0LwiINCa0JPQotCa!5e0!3m2!1sru!2skz!4v1742412671113!5m2!1sru!2skz" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </section>
+
+    <!-- Модальное окно -->
+    <div class="modal" id="modal" onclick="closeModal()">
+      <img id="modal-img" src="" />
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Электронды ақпарат жобасы. Барлық құқықтар қорғалған.</p>
+  </footer>
+
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init();
+    window.addEventListener('load', () => {
+      document.getElementById('loader').style.display = 'none';
+    });
+
+    function scrollToSection(id) {
+      document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+    }
+
+    const slides = document.querySelectorAll('.slide');
+    let current = 0;
+    setInterval(() => {
+      slides[current].classList.remove('active');
+      current = (current + 1) % slides.length;
+      slides[current].classList.add('active');
+    }, 5000);
+
+    function submitReview() {
+      const input = document.getElementById('reviewInput').value.trim();
+      const filtered = /құқық|жаман|теріс/i;
+      if (input && !filtered.test(input)) {
+        const li = document.createElement('li');
+        li.textContent = input;
+        document.getElementById('reviewList').appendChild(li);
+        document.getElementById('reviewInput').value = '';
+      }
+    }
+
+    function openModal(src) {
+      document.getElementById('modal-img').src = src;
+      document.getElementById('modal').style.display = 'flex';
+    }
+
+    function closeModal() {
+      document.getElementById('modal').style.display = 'none';
+    }
+
+    const countdown = document.getElementById('countdown');
+    const targetDate = new Date('2025-06-01T00:00:00');
+    setInterval(() => {
+      const now = new Date();
+      const diff = targetDate - now;
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor(diff / (1000 * 60 * 60) % 24);
+      const mins = Math.floor(diff / (1000 * 60) % 60);
+      const secs = Math.floor(diff / 1000 % 60);
+      countdown.textContent = `${days} күн ${hours} сағ ${mins} мин ${secs} сек`;
+    }, 1000);
+  </script>
+</body>
+</html>
